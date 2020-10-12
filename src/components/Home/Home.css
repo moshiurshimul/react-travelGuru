@@ -1,0 +1,15 @@
+.home-page {
+    background: url('../../Image/Rectangle1.png');
+    background-position: center;
+    padding-top: 9%;
+    padding-bottom: 9%;
+}
+
+.card-deck .card {
+    margin-bottom: 15px;
+    border-radius: 28px;
+}
+
+.card-img-overlay {
+    top: 50% !important;
+}
