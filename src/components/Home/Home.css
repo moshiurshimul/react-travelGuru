@@ -23,6 +23,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.svg-inline--fa {
+    margin-left: 10px;
+}
+
 button:focus {
     outline: none !important;
 }
@@ -32,3 +36,8 @@ button:focus {
     font-weight: 700 !important;
     font-size: 25px !important;
 }
+
+p.card-text {
+    font-family: 'Montserrat', sans-serif;
+}
+
