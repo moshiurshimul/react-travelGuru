@@ -6,6 +6,7 @@ import locationimage2 from '../../Image/Sreemongol.png';
 import locationimage3 from '../../Image/sundorbon.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
@@ -21,7 +22,7 @@ const Home = () => {
                         <Card.Text>
                             Sajek is a union located in the north of Chittagong Hill Tracts. It's under Baghaichori Upazila in Rangamati hill district.
                         </Card.Text>
-                        <button className="book-now-btn">Book Now <FontAwesomeIcon icon={faArrowRight} /></button>
+                        <Link to="/booking"><button className="book-now-btn" >Book Now <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </Card.ImgOverlay>
                 </Card>
                 <Card className="text-white">
@@ -31,7 +32,7 @@ const Home = () => {
                         <Card.Text>
                             It is said the name Sreemangal (or Srimangal) is named after Sri Das and Mangal Das; two brothers who settled on the banks of the Hail Haor.
                         </Card.Text>
-                        <button className="book-now-btn">Book Now <FontAwesomeIcon icon={faArrowRight} /></button>
+                        <Link to="/booking"><button className="book-now-btn" >Book Now <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </Card.ImgOverlay>
                 </Card>
                 <Card className="text-white">
@@ -41,7 +42,7 @@ const Home = () => {
                         <Card.Text>
                             The Sundarbans is a mangrove area in the delta formed by the confluence of the Ganges, Brahmaputra and Meghna Rivers in the Bay of Bengal.
                         </Card.Text>
-                        <button className="book-now-btn">Book Now <FontAwesomeIcon icon={faArrowRight} /> </button>
+                        <Link to="/booking"><button className="book-now-btn" >Book Now <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </Card.ImgOverlay>
                 </Card>
             </CardDeck>
