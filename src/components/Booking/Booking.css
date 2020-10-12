@@ -1,0 +1,46 @@
+.booking-page {
+    background: url('../../Image/Rectangle1.png');
+    background-position: center;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    color: white;
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700 !important;
+    font-size: 2.5rem !important;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+}
+
+.booking-form {
+    background: #fff;
+    padding: 30px;
+    color: #818181;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700 !important;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #adb5bd;
+}
+
+.form-control {
+    background: #f2f2f2 !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+}
+
+.booking-form-btn {
+    background: #F9A51A !important;
+    color: #000 !important;
+    border: none !important;
+}
+
+.booking-form-btn:hover {
+    background: #F9A51A;
+}
