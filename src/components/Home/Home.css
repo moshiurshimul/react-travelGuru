@@ -14,3 +14,21 @@
 .card-img-overlay {
     top: 50% !important;
 }
+
+.book-now-btn {
+    background: #F9A51A;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+.card-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700 !important;
+    font-size: 25px !important;
+}
