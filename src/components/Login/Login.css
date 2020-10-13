@@ -1,0 +1,36 @@
+.login-container {
+    max-width: 550px;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+.login-form {
+    margin: 20px 20px;
+    display: block;
+    padding: 50px;
+    border: 1px solid #333;
+}
+
+.login-form h4 {
+    margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.form-control {
+    background: #fff !important;
+    border: none !important; 
+    border-bottom: 1px solid #333 !important;
+    border-radius: 0 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+
+.login-btn {
+    padding: 20px;
+}
+
+.login-btn img {
+    width: 24px;
+    margin-right: 10px;
+}
