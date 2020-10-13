@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# apps secrat
+/src/components/Login/firebase.config.js
