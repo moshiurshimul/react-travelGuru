@@ -32,10 +32,10 @@ const Login = () => {
                     <Form>
                         <h4>Login</h4>
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Control type="email" placeholder="Enter Email" />
+                            <Form.Control type="email" placeholder="Enter Email" required/>
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control type="password" placeholder="Password" required/>
                         </Form.Group>
                         <Button variant="warning btn-block" type="submit">
                             Login
