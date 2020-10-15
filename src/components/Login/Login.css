@@ -34,3 +34,8 @@
     width: 24px;
     margin-right: 10px;
 }
+
+.create-account-btn {
+    border: none !important;
+    background: white !important;
+}
