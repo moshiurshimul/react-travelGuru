@@ -67,7 +67,10 @@ const Login = () => {
     const newUserFormSubmit = (e) => {
         if(user.email && user.password) {
             firebase.auth()
-            .createUserWithEmailAndPassword(user.email, user.password) 
+            .createUserWithEmailAndPassword(user.email, user.password)
+            .then(res => {
+                newUserNameUpdate(user.name);
+            })
             .catch(error => {
                 // Handle Errors here.
                 var errorMessage = error.message;
@@ -75,6 +78,19 @@ const Login = () => {
               });
         }
         e.preventDefault();
+    }
+
+    // New user Name Update
+    const newUserNameUpdate = name => {
+        const user = firebase.auth().currentUser;
+
+        user.updateProfile({
+        displayName: name,
+        })
+        .then(() => {})
+        .catch((error) => {
+        // An error happened.
+        });
     }
 
     // Old user login with firebase
