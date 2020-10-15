@@ -98,6 +98,7 @@ const Login = () => {
         if(user.email && user.password) {
             firebase.auth()
             .signInWithEmailAndPassword(user.email, user.password)
+            // .then(res => console.log(res))
             .catch(function(error) {
                 var errorMessage = error.message;
                 alert(errorMessage);
