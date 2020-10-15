@@ -64,7 +64,7 @@ const Login = () => {
     }
 
     // New user creating with firebase
-    const creatUserFormSubmit = (e) => {
+    const newUserFormSubmit = (e) => {
         if(user.email && user.password) {
             firebase.auth()
             .createUserWithEmailAndPassword(user.email, user.password) 
@@ -109,7 +109,7 @@ const Login = () => {
             <div className="login-container">
                 <div className="login-form">
                 {(user.newUser === true) ? (
-                    <Form onSubmit={creatUserFormSubmit}>
+                    <Form onSubmit={newUserFormSubmit}>
                         <h4>Create an account</h4>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Control onBlur={handleBlur} type="text" name="name" placeholder="Your Name" required/>
