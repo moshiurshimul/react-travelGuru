@@ -63,31 +63,54 @@ const Login = () => {
         }
     }
 
-    const handleFormSubmit = (e) => {
+    // New user creating with firebase
+    const creatUserFormSubmit = (e) => {
         if(user.email && user.password) {
             firebase.auth()
             .createUserWithEmailAndPassword(user.email, user.password) 
             .catch(error => {
                 // Handle Errors here.
                 var errorMessage = error.message;
-                alert(error.message);
+                alert(errorMessage);
               });
         }
         e.preventDefault();
     }
 
-    const handleCreateAccount = () => {
+    // Old user login with firebase
+    const returnUserFormSubmit = (e) => {
+        if(user.email && user.password) {
+            firebase.auth()
+            .signInWithEmailAndPassword(user.email, user.password)
+            .catch(function(error) {
+                var errorMessage = error.message;
+                alert(errorMessage);
+                // ...
+            });
+            e.preventDefault();
+        }
+    }
+    // Create New User / Sign Up Button
+    const createAccountButton = () => {
         const userInfo = {...user};
         userInfo.newUser = true;
         setUser(userInfo);
-        console.log(user)
+        // console.log(user)
+    }
+
+    // Old user login button
+    const loginButton = () => {
+        const userInfo = {...user};
+        userInfo.newUser = false;
+        setUser(userInfo);
     }
     return (
         <div className="login-page">
             <div className="login-container">
                 <div className="login-form">
-                    <Form onSubmit={handleFormSubmit}>
-                        <h4>{(user.newUser === true) ? 'Create an account' : 'Login'} </h4>
+                {(user.newUser === true) ? (
+                    <Form onSubmit={creatUserFormSubmit}>
+                        <h4>Create an account</h4>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Control onBlur={handleBlur} type="text" name="name" placeholder="Your Name" required/>
                         </Form.Group>
@@ -98,10 +121,25 @@ const Login = () => {
                             <Form.Control onBlur={handleBlur} type="password" name="password" placeholder="Password" required/>
                         </Form.Group>
                         <Button variant="warning btn-block" type="submit">
+                            Create an account
+                        </Button>
+                        <p style={{textAlign:"center",marginTop:"20px"}}>Already have an account?<Button className="text-warning create-account-btn" onClick={loginButton}>Login</Button></p>
+                    </Form>
+                ) : (
+                    <Form onSubmit={returnUserFormSubmit}>
+                        <h4>Login</h4>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Control onBlur={handleBlur} type="email" name="email" placeholder="Enter Email" required/>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Control onBlur={handleBlur} type="password" name="password" placeholder="Password" required/>
+                        </Form.Group>
+                        <Button variant="warning btn-block" type="submit">
                             Login
                         </Button>
+                        <p style={{textAlign:"center",marginTop:"20px"}}>Don't have an account?<Button className="text-warning create-account-btn" onClick={createAccountButton}>Create an account</Button></p>
                     </Form>
-                    <p style={{textAlign:"center", marginTop:"20px"}}>Don't have a account? <button className="text-warning create-account-btn" onClick={handleCreateAccount}>Create an account</button> </p>
+                )}
                 </div>
                 <hr/>
                 <div className="login-btn">
