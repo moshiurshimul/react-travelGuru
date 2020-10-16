@@ -13,3 +13,9 @@
     padding: 8px 20px !important;
     display: block;
 }
+
+.login-user {
+    position: absolute;
+    top: 60px;
+    color: #000 !important;
+}

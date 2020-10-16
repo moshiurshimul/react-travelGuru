@@ -82,7 +82,7 @@ const Login = () => {
                 newUserNameUpdate(user.name);
                 const signInUser = { isSignIn: true }
                 setUser(signInUser);
-                
+                history.replace(from);
             })
             .catch(error => {
                 // Handle Errors here.
@@ -114,6 +114,10 @@ const Login = () => {
             .then(res => {
                 const signInUser = { isSignIn: true }
                 setUser(signInUser);
+                const {displayName, email} = res.user;
+                const formSignUser = {name:displayName, emai:email}
+                setLoggedInUser(formSignUser);
+                history.replace(from);
             })
             .catch(function(error) {
                 var errorMessage = error.message;

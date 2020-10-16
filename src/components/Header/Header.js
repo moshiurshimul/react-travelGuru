@@ -1,10 +1,12 @@
-import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { userContext } from '../../App';
 import logo from '../../Logo.png';
 import './Header.css';
 
 const Header = () => {
+    const[loggedInUser, setLoggedInUser] = useContext(userContext);
     return (
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
@@ -16,7 +18,9 @@ const Header = () => {
                     <Nav.Link as={Link} to="/booking">Booking</Nav.Link>
                     <Nav.Link href="#blog">Blog</Nav.Link>
                     <Nav.Link href="#contact">Contact</Nav.Link>
-                    <Nav.Link className="menu-btn" as={Link} to="/login">Login</Nav.Link>
+                    { loggedInUser.name ? (<Nav.Link className="login-user">Hi, {loggedInUser.name}</Nav.Link>) 
+                    : (<Nav.Link className="menu-btn" as={Link} to="/login">Login</Nav.Link>)}
+                    
                     </Nav>
                 </Navbar.Collapse>
             </Container>
