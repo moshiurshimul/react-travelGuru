@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
@@ -6,12 +6,18 @@ import { Button, Form } from 'react-bootstrap';
 import './Login.css';
 import googleicon from '../../Icon/google.png';
 import fbicon from '../../Icon/fb.png';
+import { userContext } from '../../App';
+import { useHistory, useLocation } from 'react-router-dom';
 
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
 
 const Login = () => {
+    
+    // User Context 
+    const [loggedInUser, setLoggedInUser] = useContext(userContext);
+
     // User State
     const [user, setUser] = useState({
         isSignIn: false,
@@ -21,6 +27,11 @@ const Login = () => {
         password:''
     });
 
+    // Redirecting user to history
+    const history = useHistory();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: "/" } };
+
     // Login using Google
     const googleProvider = new firebase.auth.GoogleAuthProvider();
 
@@ -28,12 +39,10 @@ const Login = () => {
         firebase.auth().signInWithPopup(googleProvider)
         .then(result => {
             const {displayName, email} = result.user;
-            const signInUser = {
-                isSignIn: true,
-                name: displayName,
-                email: email
-            }
+            const signInUser = {isSignIn: true, name: displayName, email: email};
             setUser(signInUser);
+            setLoggedInUser(signInUser);
+            history.replace(from);
           })
           .catch(function(error) {
             // Handle Errors here.
@@ -60,6 +69,7 @@ const Login = () => {
             const newUserInfo = {...user};
             newUserInfo[e.target.name] = e.target.value;
             setUser(newUserInfo);
+            setLoggedInUser(newUserInfo);
         }
     }
 
@@ -70,6 +80,9 @@ const Login = () => {
             .createUserWithEmailAndPassword(user.email, user.password)
             .then(res => {
                 newUserNameUpdate(user.name);
+                const signInUser = { isSignIn: true }
+                setUser(signInUser);
+                
             })
             .catch(error => {
                 // Handle Errors here.
@@ -98,7 +111,10 @@ const Login = () => {
         if(user.email && user.password) {
             firebase.auth()
             .signInWithEmailAndPassword(user.email, user.password)
-            // .then(res => console.log(res))
+            .then(res => {
+                const signInUser = { isSignIn: true }
+                setUser(signInUser);
+            })
             .catch(function(error) {
                 var errorMessage = error.message;
                 alert(errorMessage);

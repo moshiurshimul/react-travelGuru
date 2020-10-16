@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Booking.css';
 
 const Booking = () => {
@@ -48,7 +49,7 @@ const Booking = () => {
                                             </Form.Group>
                                         </Col> 
                                     </Row>
-                                <Button type="submit" className="booking-form-btn btn-block" >Start Booking</Button>
+                                    <Link to="/search"><Button type="submit" className="booking-form-btn btn-block" >Start Booking</Button></Link>
                             </Form>
                         </div>
                     </Col>

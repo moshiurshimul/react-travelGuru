@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import './RoomBooking.css';
 import room1 from '../../Image/Rectangle26.png'
 import room2 from '../../Image/Rectangle27.png'
 import room3 from '../../Image/Rectangle28.png'
+import { userContext } from '../../App';
 
 const RoomBooking = () => {
+    const [loggedInUser, useLoggedInUser] = useContext(userContext);
     return (
         <div>
            <Container className="main-search-container">
                <Row>
                    <Col>
-                   <h5>Hello, user!!</h5>
+                    <h5>Hello, {loggedInUser.name}!!</h5>
                    <h3>Choose Your Stay</h3>
                    <Container className="room-container">
                        <Row>
