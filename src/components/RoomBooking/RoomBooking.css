@@ -1,0 +1,20 @@
+.main-search-container {
+    margin-top: 50px;
+}
+
+.room-container {
+    margin-top: 80px;
+}
+
+.right-side {
+    margin-top: 10%;
+}
+
+h5.room-title {
+    font-size: 18px !important;
+}
+
+.room-details {
+    font-size: 14px !important;
+}
+
