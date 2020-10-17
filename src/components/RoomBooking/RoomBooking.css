@@ -1,5 +1,6 @@
 .main-search-container {
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .room-container {
@@ -18,3 +19,7 @@ h5.room-title {
     font-size: 14px !important;
 }
 
+.user-welcome-h5 {
+    display: inline;
+    margin-right: 10px;
+}

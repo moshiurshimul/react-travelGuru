@@ -32,7 +32,7 @@ const Login = () => {
     const location = useLocation();
     const { from } = location.state || { from: { pathname: "/" } };
 
-    // Login using Google
+    // Login using Google (Google Provider)
     const googleProvider = new firebase.auth.GoogleAuthProvider();
 
     const handleGoogleSignIn = () => {
@@ -49,6 +49,33 @@ const Login = () => {
             // ...
           });
     } 
+
+    // Login using Facebook (FB Provide)
+
+    var fbProvider = new firebase.auth.FacebookAuthProvider();
+
+    const handleFbSignIn = () => {
+        firebase.auth().signInWithPopup(fbProvider).then(result => {
+            const user = result.user;
+            const {displayName, email} = user;
+            const signInUser = {isSignIn: true, name: displayName, email:email};
+            setUser(signInUser);
+            setLoggedInUser(signInUser);
+            history.replace(from);
+            // console.log(user)
+            // ...
+          }).catch(function(error) {
+            // Handle Errors here.
+            const errorMessage = error.message;
+            alert(errorMessage);
+            // The email of the user's account used.
+            const email = error.email;
+            alert(email);
+            // The firebase.auth.AuthCredential type that was used.
+            const credential = error.credential;
+            alert(credential);
+          });
+    }
 
     // Login Using Email & Password form 
 
@@ -181,7 +208,7 @@ const Login = () => {
                 <hr/>
                 <div className="login-btn">
                     <Button variant="outline-secondary btn-block" onClick={handleGoogleSignIn}><img src={googleicon} alt=""/> Continue With Google</Button>
-                    <Button variant="outline-secondary btn-block"><img src={fbicon} alt=""/>Continue With Facebook</Button>
+                    <Button variant="outline-secondary btn-block" onClick={handleFbSignIn}><img src={fbicon} alt=""/>Continue With Facebook</Button>
                 </div>
             </div>
         </div>

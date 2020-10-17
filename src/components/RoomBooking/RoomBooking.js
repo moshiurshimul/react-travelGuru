@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
+import * as firebase from "firebase/app";
+import "firebase/auth";
 import './RoomBooking.css';
 import room1 from '../../Image/Rectangle26.png'
 import room2 from '../../Image/Rectangle27.png'
@@ -7,13 +9,26 @@ import room3 from '../../Image/Rectangle28.png'
 import { userContext } from '../../App';
 
 const RoomBooking = () => {
-    const [loggedInUser, useLoggedInUser] = useContext(userContext);
+    const [loggedInUser, setLoggedInUser] = useContext(userContext);
+
+    // User sign out
+    const handleSignOut = () => {
+        firebase.auth().signOut()
+            .then(() => {
+            // Sign-out successful.
+            const signOutUser = {name: '', email: ''}; 
+            setLoggedInUser(signOutUser);
+            })
+          .catch(function(error) {
+            // An error happened.
+            });
+    }
     return (
         <div>
            <Container className="main-search-container">
                <Row>
                    <Col>
-                    <h5>Hello, {loggedInUser.name}!!</h5>
+                    <h5 className="user-welcome-h5">Hello, {loggedInUser.name}!!</h5> <Button onClick={handleSignOut} className="btn btn-warning">Log Out</Button>
                    <h3>Choose Your Stay</h3>
                    <Container className="room-container">
                        <Row>
